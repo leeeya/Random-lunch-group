@@ -1,8 +1,10 @@
-const dotenv = require('dotenv');
 const express = require('express');
+const createError = require('http-errors');
+const initLoaders = require('./loaders');
+
 const app = express();
 
-dotenv.config();
+initLoaders(app);
 
 const peopleRouter = require('./routes/people.route');
 
@@ -29,7 +31,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(2021, () => {
-  console.log('Lunch app is listening on port 2021!') // eslint-disable-line no-console
+  console.log('Lunch app is listening on port 2021!'); // eslint-disable-line no-console
 });
 
 module.exports = app;
