@@ -1,10 +1,12 @@
 import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import AsideBoard from '../../components/organisms/AsideBoard';
+import styled from 'styled-components';
 
 const App: React.FC = (): ReactElement => {
   return (
-    <>
-      <h1>People</h1>
+    <Wrapper>
+      <AsideBoard />
       <Switch>
         <Route exact path='/'>
           <h1>Lunch</h1>
@@ -13,8 +15,15 @@ const App: React.FC = (): ReactElement => {
           <h1>result</h1>
         </Route>
       </Switch>
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 2.5fr;
+  justify-items: center;
+  padding: 60px;
+`;
 
 export default App;
