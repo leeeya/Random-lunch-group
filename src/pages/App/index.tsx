@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { ReactElement } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-const App = () => {
-  return(
+const App: React.FC = (): ReactElement => {
+  return (
     <>
-      <h1>Lunch</h1>
+      <h1>People</h1>
+      <Switch>
+        <Route exact path='/'>
+          <h1>Lunch</h1>
+        </Route>
+        <Route path='/result'>
+          <h1>result</h1>
+        </Route>
+      </Switch>
     </>
   );
 };
