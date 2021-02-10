@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
 import createError from 'http-errors';
 import initLoaders from './loaders';
-import mongoose from 'mongoose';
 import peopleRouter from './routes/people.route';
 
 const app = express();
@@ -14,15 +13,14 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: createError.HttpError, req: Request, res: Response) => {
   console.error(err);
 
   if (process.env.NODE_ENV === 'production') {
-    if (err instanceof mongoose.Error) err = createError(500);
     err.stack = '';
   }
 
-  res.status(500);
+  res.status(err.status || 500);
   res.json(err);
 });
 
