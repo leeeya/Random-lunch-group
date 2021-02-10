@@ -1,6 +1,7 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+const configs = {
   databaseURL: process.env.MONGODB_URL,
   mongooseOptions: {
     useNewUrlParser: true,
@@ -12,3 +13,5 @@ module.exports = {
     optionsSuccessStatus: 200,
   },
 }
+
+export default configs;

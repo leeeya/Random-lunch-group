@@ -2,7 +2,9 @@ import React from 'react'
 
 const App = () => {
   return(
-    <h1>Lunch</h1>
+    <>
+      <h1>Lunch</h1>
+    </>
   );
 };
 

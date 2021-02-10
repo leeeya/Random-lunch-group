@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const { databaseURL, mongooseOptions } = require('../configs');
+import configs from '../configs';
 
 const dbLoader = () => {
-  mongoose.connect(databaseURL, mongooseOptions);
+  mongoose.connect(configs.databaseURL as string, configs.mongooseOptions);
 
   mongoose.connection.on('error', () => console.error('connection error'));
   mongoose.connection.once('open', () => console.log('mongoose is connected'));
 };
 
-module.exports = dbLoader;
+export default dbLoader;
