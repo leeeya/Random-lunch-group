@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import lunchReducer from './lunch';
+import peopleReducer from './people';
 
 const rootReducer = combineReducers({
-  lunchReducer,
+  peopleReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
