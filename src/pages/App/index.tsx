@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AsideBoard from '../../components/organisms/AsideBoard';
+import AsideBoard from '../AsideBoard';
 import styled from 'styled-components';
 
 const App: React.FC = (): ReactElement => {
@@ -9,7 +9,7 @@ const App: React.FC = (): ReactElement => {
       <AsideBoard />
       <Switch>
         <Route exact path='/'>
-          <h1>Lunch</h1>
+          <h1>Main</h1>
         </Route>
         <Route path='/result'>
           <h1>result</h1>

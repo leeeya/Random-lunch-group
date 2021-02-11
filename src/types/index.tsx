@@ -1,7 +1,4 @@
-export interface RequestBody {
+export interface Person {
+  _id: string;
   name: string;
-}
-
-export interface ResponseBody extends RequestBody {
-  id: string;
 }

@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express';
 type Handler = (req: Request, res: Response, next: NextFunction) => void;
 
 export const createPeople: Handler = async (req, res, next) => {
-  const name = req.params.name;
+  const name = req.body.name;
 
   try {
     const createdPeople = await PeopleService.create(name);

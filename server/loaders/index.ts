@@ -11,6 +11,7 @@ const initLoaders = (app: Express) => {
 
   app.use(cors(configs.corsOptions));
   app.use(express.json());
+
   dbLoader();
 };
 

@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../utils/api';
-
-interface Person {
-  id: string;
-  name: string;
-}
+import { Person } from '../types';
 
 interface PeopleInitState {
   people: Person[];
@@ -22,9 +18,9 @@ export const createPerson = createAsyncThunk(
   'people/createPerson',
   async (name: string, { rejectWithValue }) => {
     try {
-      const response = await api.createPerson(name);
+      const { data } = await api.createPerson(name);
 
-      return response;
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }
