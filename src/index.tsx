@@ -13,7 +13,7 @@ ReactDOM.render(
     <Router>
       <Globalstyles />
       <ThemeProvider theme={theme}>
-       <App />
+        <App />
       </ThemeProvider>
     </Router>
   </Provider>,

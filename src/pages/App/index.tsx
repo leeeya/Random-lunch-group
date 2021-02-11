@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import AsideBoard from '../AsideBoard';
 import styled from 'styled-components';
+import Main from '../Main';
 
 const App: React.FC = (): ReactElement => {
   return (
@@ -9,7 +10,7 @@ const App: React.FC = (): ReactElement => {
       <AsideBoard />
       <Switch>
         <Route exact path='/'>
-          <h1>Main</h1>
+          <Main />
         </Route>
         <Route path='/result'>
           <h1>result</h1>
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: minmax(300px, 1fr) 2.5fr;
   justify-items: center;
-  padding: 60px;
+  padding: 80px;
 `;
 
 export default App;

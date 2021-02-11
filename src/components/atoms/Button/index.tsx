@@ -12,7 +12,6 @@ const Button: React.FC<ButtonProps> = ({
   title,
   onClick,
 }): ReactElement => {
-  console.log(className);
   return (
     <StyledButton
       className={className}
@@ -24,13 +23,14 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 const StyledButton = styled.button`
-  width: 48px;
+  width: 70%;
   margin-top: 8px;
-  border: 1px solid black;
+  color: ${({ theme }) => theme.color.white};
+  border: 1px solid white;
   border-radius: ${({ theme }) => theme.borderRadius};
 
   &:hover {
-    transform: translate(-0.1rem, -0.1rem);
+    transform: translate(0.1rem, -0.1rem);
     cursor: pointer;
   }
 `;

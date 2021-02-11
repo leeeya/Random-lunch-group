@@ -20,9 +20,9 @@ const NameList: React.FC<NameListProps> = ({
   };
 
   return (
-    <>
-      <h3>lunch people</h3>
-      <Wrapper>
+    <Wrapper>
+      <h2>Lunch people</h2>
+      <ListWrapper>
         {data.map(person =>
           <Card
             key={person._id}
@@ -36,15 +36,24 @@ const NameList: React.FC<NameListProps> = ({
             />
           </Card>
         )}
-      </Wrapper>
-    </>
+      </ListWrapper>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+`;
+
+const ListWrapper = styled.div`
+  display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-left: 16px;
 `;
 
 export default NameList;

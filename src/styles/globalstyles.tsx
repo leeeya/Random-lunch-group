@@ -11,13 +11,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    position:fixed;
     margin: 0;
     padding: 0;
     background-color: ${theme.color.lightGrey};
   }
 
   button {
-    background: transparent;
+    background: ${theme.color.navy};
     cursor: pointer;
     border: none;
     outline: none;
