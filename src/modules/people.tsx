@@ -14,6 +14,19 @@ const initialState: PeopleInitState = {
   error: null,
 };
 
+export const getPeople = createAsyncThunk(
+  'people/getPeople',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await api.getPeople();
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
+
 export const createPerson = createAsyncThunk(
   'people/createPerson',
   async (name: string, { rejectWithValue }) => {
@@ -27,24 +40,37 @@ export const createPerson = createAsyncThunk(
   },
 );
 
+export const deletePerson = createAsyncThunk(
+  'people/deletePerson',
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const { data } = await api.deletePerson(id);
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
+
 const peopleSlice = createSlice({
   name: 'people',
   initialState,
-  reducers: {
-    // getPeople: (state, { payload }: PayloadAction<Person[]>) => {
-    //   state.people = payload;
-    //   state.loading = 'idle';
-    // },
-    // addPerson: (state, { payload }: PayloadAction<Person>) => {
-    //   state.people = [...state.people, payload];
-    //   state.loading = 'idle';
-    // },
-    // deletePerson: (state, action) => {
-    //   state.people = state.people.filter(person => person !== action.payload);
-    //   state.loading = 'idle';
-    // }
-  },
+  reducers: {},
   extraReducers: builder => {
+    builder.addCase(getPeople.fulfilled, (state, { payload }: PayloadAction<Person[]>) => {
+      state.loading = 'idle';
+      state.people = payload;
+    });
+    builder.addCase(getPeople.rejected, (state, { payload }) => {
+      state.loading = 'idle';
+      state.error = Error('get people failed');
+    });
+    builder.addCase(getPeople.pending, (state, { payload }) => {
+      if (state.loading === 'idle') {
+        state.loading = 'pending';
+      }
+    });
     builder.addCase(createPerson.pending, (state, { payload }) => {
       if (state.loading === 'idle') {
         state.loading = 'pending';
@@ -56,7 +82,20 @@ const peopleSlice = createSlice({
     });
     builder.addCase(createPerson.rejected, (state, { payload }) => {
       state.loading = 'idle';
-      state.error = Error('create failed');
+      state.error = Error('create person failed');
+    });
+    builder.addCase(deletePerson.pending, (state, { payload }) => {
+      if (state.loading === 'idle') {
+        state.loading = 'pending';
+      }
+    });
+    builder.addCase(deletePerson.fulfilled, (state, { payload }: PayloadAction<Person>) => {
+      state.loading = 'idle';
+      state.people = state.people.filter(person => person._id !== payload._id);
+    });
+    builder.addCase(deletePerson.rejected, (state, { payload }) => {
+      state.loading = 'idle';
+      state.error = Error('delete person failed');
     });
   }
 });

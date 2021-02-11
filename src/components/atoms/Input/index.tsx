@@ -11,7 +11,7 @@ const Input: React.FC<InputProps> = ({
   className = 'default-input',
   value,
   onChange,
-}) :ReactElement => {
+}): ReactElement => {
   return (
     <StyledInput
       className={className}

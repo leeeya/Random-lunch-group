@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
-const themes: DefaultTheme = {
-  fontSize : {
+const theme: DefaultTheme = {
+  fontSize: {
     large: '48px',
     medium: '28px',
     regular: '18px',
@@ -13,23 +13,23 @@ const themes: DefaultTheme = {
     reqular: 400,
     light: 300,
   },
-  color : {
+  color: {
     black: '#222831',
     white: '#f9f7f7',
     grey: '#c9d6df',
     lightGrey: '#f0f5f9',
-    darkGrey:'#52616b',
-    navy:'#0a043c',
-    green:'#03506f',
+    darkGrey: '#52616b',
+    navy: '#0a043c',
+    green: '#03506f',
     orange: '#ff5722',
-    red:'#d72323',
+    red: '#1b0404',
   },
   duration: '300ms',
   borderRadius: '8px',
-  boxShadow : {
+  boxShadow: {
     default: '0px 2px 2px rgba(0, 0, 0, 0.25)',
     deep: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
   },
 };
 
-export default themes;
+export { theme };

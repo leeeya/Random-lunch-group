@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import themes from '../styles/theme';
+
+import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -12,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: ${themes.color.white}
+    background-color: ${theme.color.lightGrey};
   }
 
   button {
@@ -28,19 +29,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: ${themes.fontSize.large}
+    font-size: ${theme.fontSize.large}
   }
 
   h2 {
-    font-size: ${themes.fontSize.medium}
+    font-size: ${theme.fontSize.medium}
   }
 
   h3 {
-    font-size: ${themes.fontSize.regular}
+    font-size: ${theme.fontSize.regular}
   }
 
   p {
-    font-size: ${themes.fontSize.small}
+    font-size: ${theme.fontSize.small}
   }
 `;
 

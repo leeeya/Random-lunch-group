@@ -1,8 +1,8 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
-    fontSize:{
+    fontSize: {
       large: string,
       medium: string,
       regular: string,
@@ -14,20 +14,20 @@ declare module "styled-components" {
       reqular: number,
       light: number,
     },
-    color : {
+    color: {
       black: string,
       white: string,
       grey: string,
       lightGrey: string,
-      darkGrey:string,
-      navy:string,
-      green:string,
+      darkGrey: string,
+      navy: string,
+      green: string,
       orange: string,
-      red:string,
+      red: string,
     },
     duration: string,
     borderRadius: string,
-    boxShadow : {
+    boxShadow: {
       default: string,
       deep: string,
     }

@@ -26,7 +26,7 @@ export const getAllPeople: Handler = async (req, res, next) => {
 };
 
 export const removePerson: Handler = async (req, res, next) => {
-  const id = req.params.id;
+  const id = req.body.id;
 
   try {
     const removedPerson = await PeopleService.remove(id);
