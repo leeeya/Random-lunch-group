@@ -22,7 +22,7 @@ const theme: DefaultTheme = {
     navy: '#0a043c',
     green: '#03506f',
     orange: '#ff5722',
-    red: '#1b0404',
+    red: '#eb0000',
   },
   duration: '300ms',
   borderRadius: '8px',

@@ -1,14 +1,30 @@
 import React, { ChangeEvent, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Input from '../../atoms/Input';
 import Button from '../../atoms/Button';
 import styled from 'styled-components';
+import { RootState } from '../../../modules/rootReducer';
 
 const GroupingFrom = () => {
+  const { people } = useSelector((state: RootState) => state.people);
   const [groupSize, setGroupSize] = useState('');
   const [memberSize, setMemberSize] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleGroupingInput = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = target;
+
+    if (!Number(value)) {
+      setErrorMessage('You can only enter numbers');
+
+      if (name === 'groupSize') return setGroupSize('');
+      return setMemberSize('');
+    }
+
+    if (Number(value) < 1 || 10 < Number(value)) {
+      setErrorMessage('Only numbers from 0 to 10 can be entered');
+      return;
+    }
 
     switch (name) {
       case 'groupSize':
@@ -23,7 +39,9 @@ const GroupingFrom = () => {
   };
 
   const handleSubmitButton = () => {
-    console.log('success submit');
+    if (people.length < Number(groupSize) * Number(memberSize)) {
+      alert('You have to add more members');
+    }
   };
 
   return (
@@ -44,11 +62,14 @@ const GroupingFrom = () => {
           onChange={handleGroupingInput}
         />
       </Label>
-        <Button
-          className='submit-button'
-          title='그룹만들기'
-          onClick={handleSubmitButton}
-        />
+        <ErrorMessageBox>
+          {errorMessage ? errorMessage : ''}
+        </ErrorMessageBox>
+      <Button
+        className='submit-button'
+        title='그룹만들기'
+        onClick={handleSubmitButton}
+      />
     </Wrapper>
   );
 };
@@ -59,6 +80,10 @@ const Wrapper = styled.div`
 `;
 
 const Label = styled.label`
-  border-color: ${({ theme }) => theme.color.navy}
+  border-color: ${({ theme }) => theme.color.red}
+`;
+
+const ErrorMessageBox = styled.p`
+  color: ${({ theme })=> theme.color.red}
 `;
 export default GroupingFrom;

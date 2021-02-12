@@ -30,3 +30,8 @@ Let's randomly divide people for lunch time.
     - ORM or other helpers
     - design patterns for abstracting away DB (repository pattern / etc)
   - Use of `ESLint` in your editor recommended.
+
+Type 'IterableIterator<number>' is not an array type or a string type. Use compiler option '--downlevelIteration' to allow iterating of iterators.
+ -> 에러발생해서     "downlevelIteration": true, 설정해줘서 해결
+
+ Object 순서를 보장해주지 않아서 Map 자료구조를 사용하였다.

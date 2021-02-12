@@ -25,12 +25,12 @@ const Button: React.FC<ButtonProps> = ({
 const StyledButton = styled.button`
   width: 70%;
   margin-top: 8px;
-  color: ${({ theme }) => theme.color.white};
   border: 1px solid white;
+  color: ${({ theme }) => theme.color.white};
   border-radius: ${({ theme }) => theme.borderRadius};
-
+  transition: all 300ms ease-in;
   &:hover {
-    transform: translate(0.1rem, -0.1rem);
+    transform: translate(2px, -2px);
     cursor: pointer;
   }
 `;
