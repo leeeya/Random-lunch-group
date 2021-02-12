@@ -1,37 +1,39 @@
-import React, { ChangeEvent, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { ChangeEvent, ReactElement, useState } from 'react';
+import { useHistory } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import Input from '../../atoms/Input';
 import Button from '../../atoms/Button';
-import styled from 'styled-components';
 import { RootState } from '../../../modules/rootReducer';
+import { setGroupingInputValues, setRandomGroupList } from '../../../modules/people';
+import { getRandomGroupList } from '../../../utils/getRandomGroupList';
 
-const GroupingFrom = () => {
+const GroupingFrom: React.FC = () : ReactElement => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { people } = useSelector((state: RootState) => state.people);
-  const [groupSize, setGroupSize] = useState('');
-  const [memberSize, setMemberSize] = useState('');
+  const [groupSize, setGroupSize] = useState(0);
+  const [minMemberSize, setMinMemberSize] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleGroupingInput = ({ target }: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = target;
+    const valueToNumber = Number(value);
 
-    if (!Number(value)) {
+    if (!valueToNumber) {
       setErrorMessage('You can only enter numbers');
 
-      if (name === 'groupSize') return setGroupSize('');
-      return setMemberSize('');
+      if (name === 'groupSize') return setGroupSize(0);
+      return setMinMemberSize(0);
     }
-
-    if (Number(value) < 1 || 10 < Number(value)) {
-      setErrorMessage('Only numbers from 0 to 10 can be entered');
-      return;
-    }
+    if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage('Only numbers from 0 to 10 can be entered');
 
     switch (name) {
       case 'groupSize':
-        setGroupSize(value);
+        setGroupSize(valueToNumber);
         break;
-      case 'memberSize':
-        setMemberSize(value);
+      case 'minMemberSize':
+        setMinMemberSize(valueToNumber);
         break;
       default: alert('not exisit name');
         break;
@@ -39,38 +41,46 @@ const GroupingFrom = () => {
   };
 
   const handleSubmitButton = () => {
-    if (people.length < Number(groupSize) * Number(memberSize)) {
-      alert('You have to add more members');
-    }
+    if (people.length < groupSize * minMemberSize)  return alert('You have to add more members');
+
+    const groupList = getRandomGroupList(minMemberSize, groupSize, people.length);
+
+    dispatch(setGroupingInputValues({groupSize, minMemberSize}));
+    dispatch(setRandomGroupList(groupList));
+
+    history.push('/result');
   };
 
   return (
-    <Wrapper>
-      <Label>✨Number of Group
+    <div>
+      <h1>Grouping</h1>
+      <Wrapper>
+        <Label>✨Number of Group
         <Input
-          className='group-size-input'
-          value={groupSize}
-          name='groupSize'
-          onChange={handleGroupingInput}
-        />
-      </Label>
-      <Label>✨Minimum member size
+            className='group-size-input'
+            value={groupSize}
+            name='groupSize'
+            onChange={handleGroupingInput}
+          />
+        </Label>
+        <Label>✨Minimum member size
         <Input
-          className='minimum-member-size-input'
-          value={memberSize}
-          name='memberSize'
-          onChange={handleGroupingInput}
-        />
-      </Label>
+            className='minimum-member-size-input'
+            value={minMemberSize}
+            name='minMemberSize'
+            onChange={handleGroupingInput}
+          />
+        </Label>
         <ErrorMessageBox>
           {errorMessage ? errorMessage : ''}
         </ErrorMessageBox>
-      <Button
-        className='submit-button'
-        title='그룹만들기'
-        onClick={handleSubmitButton}
-      />
-    </Wrapper>
+        <Button
+          className='submit-button'
+          title='Make Group!'
+          onClick={handleSubmitButton}
+        />
+      </Wrapper>
+    </div>
   );
 };
 
@@ -84,6 +94,7 @@ const Label = styled.label`
 `;
 
 const ErrorMessageBox = styled.p`
-  color: ${({ theme })=> theme.color.red}
+  color: ${({ theme }) => theme.color.red}
 `;
+
 export default GroupingFrom;

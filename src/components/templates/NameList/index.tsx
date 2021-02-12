@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Person } from '../../../types';
 import { deletePerson } from '../../../modules/people';
-import Card from '../../../components/atoms/Card';
 import Button from '../../../components/atoms/Button';
+import Card from '../../../components/atoms/Card';
+import List from '../../../components/molecules/List';
 
 interface NameListProps {
   data: Person[];
@@ -21,8 +22,7 @@ const NameList: React.FC<NameListProps> = ({
 
   return (
     <Wrapper>
-      <h2>Lunch people</h2>
-      <ListWrapper>
+      <List title='Lunch People'>
         {data.map(person =>
           <Card
             key={person._id}
@@ -34,9 +34,9 @@ const NameList: React.FC<NameListProps> = ({
               title='삭제'
               onClick={() => handleDeleteButton(person._id)}
             />
-          </Card>
+          </Card>,
         )}
-      </ListWrapper>
+      </List>
     </Wrapper>
   );
 };
@@ -47,13 +47,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-`;
-
-const ListWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: 16px;
 `;
 
 export default NameList;

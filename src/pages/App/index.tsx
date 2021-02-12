@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AsideBoard from '../AsideBoard';
 import styled from 'styled-components';
-import Main from '../Main';
+import GroupingForm from '../../components/molecules/GroupingForm';
+import AsideBoard from '../AsideBoard';
+import ResultPage from '../ResultPage';
 
 const App: React.FC = (): ReactElement => {
   return (
@@ -10,10 +11,10 @@ const App: React.FC = (): ReactElement => {
       <AsideBoard />
       <Switch>
         <Route exact path='/'>
-          <Main />
+          <GroupingForm />
         </Route>
         <Route path='/result'>
-          <h1>result</h1>
+          <ResultPage />
         </Route>
       </Switch>
     </Wrapper>

@@ -2,15 +2,27 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../utils/api';
 import { Person } from '../types';
 
+interface GroupingInputValues {
+  groupSize: number;
+  minMemberSize: number;
+}
+
 interface PeopleInitState {
   people: Person[];
   loading: string;
+  groupingInputValues: GroupingInputValues;
+  randomGroupList: number[][];
   error: Error | null;
 }
 
 const initialState: PeopleInitState = {
   people: [],
   loading: 'idle',
+  groupingInputValues: {
+    groupSize: 0,
+    minMemberSize: 0
+  },
+  randomGroupList: [],
   error: null,
 };
 
@@ -56,8 +68,20 @@ export const deletePerson = createAsyncThunk(
 const peopleSlice = createSlice({
   name: 'people',
   initialState,
-  reducers: {},
+  reducers: {
+    setGroupingInputValues: (state, action) => {
+      state.groupingInputValues = action.payload;
+    },
+    setRandomGroupList: (state, action) => {
+      state.randomGroupList = action.payload;
+    },
+  },
   extraReducers: builder => {
+    builder.addCase(getPeople.pending, (state, { payload }) => {
+      if (state.loading === 'idle') {
+        state.loading = 'pending';
+      }
+    });
     builder.addCase(getPeople.fulfilled, (state, { payload }: PayloadAction<Person[]>) => {
       state.loading = 'idle';
       state.people = payload;
@@ -65,11 +89,6 @@ const peopleSlice = createSlice({
     builder.addCase(getPeople.rejected, (state, { payload }) => {
       state.loading = 'idle';
       state.error = Error('get people failed');
-    });
-    builder.addCase(getPeople.pending, (state, { payload }) => {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
-      }
     });
     builder.addCase(createPerson.pending, (state, { payload }) => {
       if (state.loading === 'idle') {
@@ -97,7 +116,8 @@ const peopleSlice = createSlice({
       state.loading = 'idle';
       state.error = Error('delete person failed');
     });
-  }
+  },
 });
 
+export const { setGroupingInputValues, setRandomGroupList } = peopleSlice.actions;
 export default peopleSlice.reducer;

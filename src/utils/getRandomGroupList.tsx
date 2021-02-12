@@ -3,7 +3,7 @@ import { getRandomInt } from './getRandomInt';
 export const getRandomGroupList = (
   minMemberSize: number,
   groupSize: number,
-  memberSize: number
+  memberSize: number,
 ): number[][] | Error => {
   if (memberSize < minMemberSize * groupSize) return Error('memberSize should be larger');
 
@@ -23,8 +23,8 @@ export const getRandomGroupList = (
   const randomKeyList = Array.from(randomkeysMap.values());
   const groupList: number[][] = [];
   const numberOfperGroup = memberSize / groupSize;
+  const PERSON = 1;
   let remainder = memberSize % groupSize;
-  let person = 1;
 
   while (groupList.length !== groupSize) {
     let group: number[] = [];
@@ -32,7 +32,7 @@ export const getRandomGroupList = (
     if (remainder === 0) {
       group = randomKeyList.splice(0, numberOfperGroup);
     } else if (remainder >= 1) {
-      group = randomKeyList.splice(0, numberOfperGroup + person);
+      group = randomKeyList.splice(0, numberOfperGroup + PERSON);
       remainder -= 1;
     }
     groupList.push(group);

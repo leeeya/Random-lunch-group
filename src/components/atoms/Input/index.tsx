@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface InputProps {
   className?: string;
   name: string;
-  value: string;
+  value: string | number;
   placeholder?: string;
   onChange: ({ target }: ChangeEvent<HTMLInputElement>) => void;
 }
