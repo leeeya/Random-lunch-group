@@ -1,14 +1,14 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import Input from '../../atoms/Input';
-import Button from '../../atoms/Button';
+import { useHistory } from 'react-router';
 import { RootState } from '../../../modules/rootReducer';
 import { setGroupingInputValues, setRandomGroupList } from '../../../modules/people';
+import Input from '../../atoms/Input';
+import Button from '../../atoms/Button';
 import { getRandomGroupList } from '../../../utils/getRandomGroupList';
+import { Wrapper, Label, ErrorMessageBox } from '../../../styles/shared';
 
-const GroupingFrom: React.FC = () : ReactElement => {
+const GroupingFrom: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { people } = useSelector((state: RootState) => state.people);
@@ -41,11 +41,11 @@ const GroupingFrom: React.FC = () : ReactElement => {
   };
 
   const handleSubmitButton = () => {
-    if (people.length < groupSize * minMemberSize)  return alert('You have to add more members');
+    if (people.length < groupSize * minMemberSize) return alert('You have to add more members');
 
     const groupList = getRandomGroupList(minMemberSize, groupSize, people.length);
 
-    dispatch(setGroupingInputValues({groupSize, minMemberSize}));
+    dispatch(setGroupingInputValues({ groupSize, minMemberSize }));
     dispatch(setRandomGroupList(groupList));
 
     history.push('/result');
@@ -83,18 +83,5 @@ const GroupingFrom: React.FC = () : ReactElement => {
     </div>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  border-color: ${({ theme }) => theme.color.red}
-`;
-
-const ErrorMessageBox = styled.p`
-  color: ${({ theme }) => theme.color.red}
-`;
 
 export default GroupingFrom;

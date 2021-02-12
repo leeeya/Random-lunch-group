@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
+import { StyledUl } from '../../../styles/shared';
 
 interface ListProps {
   title: string;
@@ -15,21 +15,14 @@ const List: React.FC<ListProps> = ({
   return (
     <>
       <h2>{title}</h2>
-      <Wrapper>
+      <StyledUl>
         {data.map((item, index) =>
           <li key={index}>{item}</li>,
         )}
         {children}
-      </Wrapper>
+      </StyledUl>
     </>
   );
 };
-
-const Wrapper = styled.ul`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: 16px;
-`;
 
 export default List;

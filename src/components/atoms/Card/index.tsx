@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { flexColumnCenter } from '../../../styles/mixin';
+import { StyledCard } from '../../../styles/shared';
 
 interface CardProps {
   className: string;
@@ -19,18 +18,5 @@ const Card: React.FC<CardProps> = ({
     </StyledCard>
   );
 };
-
-const StyledCard = styled.div`
-  ${flexColumnCenter};
-
-  width: 120px;
-  height: 80px;
-  margin-bottom: 12px;
-  margin-right: 12px;
-  box-shadow: ${({ theme }) => theme.boxShadow.deep};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.color.navy};
-  color: ${({ theme }) => theme.color.white};
-`;
 
 export default Card;

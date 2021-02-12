@@ -1,13 +1,12 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import GroupList from '../../components/templates/GroupList';
-import Button from '../../components/atoms/Button';
-import { flexRowCenter } from '../../styles/mixin';
 import { RootState } from '../../modules/rootReducer';
 import { setRandomGroupList } from '../../modules/people';
+import GroupList from '../../components/templates/GroupList';
+import Button from '../../components/atoms/Button';
 import { getRandomGroupList } from '../../utils/getRandomGroupList';
+import { Wrapper } from '../../styles/shared';
 
 const ResultPage: React.FC = () : ReactElement=> {
   const dispatch = useDispatch();
@@ -39,9 +38,5 @@ const ResultPage: React.FC = () : ReactElement=> {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  ${flexRowCenter}
-`;
 
 export default ResultPage;

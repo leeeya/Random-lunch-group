@@ -1,11 +1,10 @@
 import React, { useState, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import { createPerson } from '../../../modules/people';
-import { flexColumnCenter } from '../../../styles/mixin';
 import { RootState } from '../../../modules/rootReducer';
+import { Wrapper } from '../../../styles/shared';
 
 const NameInputForm = () => {
   const dispatch = useDispatch();
@@ -44,11 +43,5 @@ const NameInputForm = () => {
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  ${flexColumnCenter}
-
-  margin-bottom: 24px;
-`;
 
 export default NameInputForm;

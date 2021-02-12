@@ -1,5 +1,5 @@
 import React, { ChangeEvent, ReactElement } from 'react';
-import styled from 'styled-components';
+import { StyledInput } from '../../../styles/shared';
 
 interface InputProps {
   className?: string;
@@ -26,9 +26,5 @@ const Input: React.FC<InputProps> = ({
     />
   );
 };
-
-const StyledInput = styled.input`
-  width: 70%;
-`;
 
 export default Input;

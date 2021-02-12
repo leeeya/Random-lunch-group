@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import GroupingForm from '../../components/molecules/GroupingForm';
 import AsideBoard from '../AsideBoard';
 import ResultPage from '../ResultPage';
+import { AppWrapper } from '../../styles/shared';
 
 const App: React.FC = (): ReactElement => {
   return (
-    <Wrapper>
+    <AppWrapper>
       <AsideBoard />
       <Switch>
         <Route exact path='/'>
@@ -17,15 +18,8 @@ const App: React.FC = (): ReactElement => {
           <ResultPage />
         </Route>
       </Switch>
-    </Wrapper>
+    </AppWrapper>
   );
 };
-
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) 2.5fr;
-  justify-items: center;
-  padding: 80px;
-`;
 
 export default App;
