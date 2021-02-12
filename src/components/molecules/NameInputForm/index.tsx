@@ -5,6 +5,7 @@ import Input from '../../atoms/Input';
 import { createPerson } from '../../../modules/people';
 import { RootState } from '../../../modules/rootReducer';
 import { Wrapper } from '../../../styles/shared';
+import { MESSAGE, NAME, TITLE } from '../../../constants';
 
 const NameInputForm = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const NameInputForm = () => {
 
   const handleAddNameButton = async () => {
     if (people.find(person => person.name === name)) {
-     alert('중복된 이름입니다.');
+     alert(MESSAGE.THIS_IS_A_DUPLICATE_NAME);
      setName('');
      return;
     }
@@ -27,17 +28,16 @@ const NameInputForm = () => {
 
   return (
     <Wrapper>
-      <h2>Add person!😋</h2>
+      <h2>Add Person!😋</h2>
         <Input
-          className='name-input'
-          name='name'
+          name={NAME.NAME}
           value={name}
-          placeholder='Enter member name!'
+          placeholder={TITLE.ENTER_MEMBER_NAME}
           onChange={handleNameInput}
         />
         <Button
-          className='add-button'
-          title='추가'
+          className={NAME.ADD_BUTTON}
+          title={TITLE.ADD}
           onClick={handleAddNameButton}
         />
     </Wrapper>

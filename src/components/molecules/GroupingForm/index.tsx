@@ -7,6 +7,7 @@ import Input from '../../atoms/Input';
 import Button from '../../atoms/Button';
 import { getRandomGroupList } from '../../../utils/getRandomGroupList';
 import { Wrapper, Label, ErrorMessageBox } from '../../../styles/shared';
+import { MESSAGE, NAME, PATH, TITLE } from '../../../constants';
 
 const GroupingFrom: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
@@ -21,34 +22,34 @@ const GroupingFrom: React.FC = (): ReactElement => {
     const valueToNumber = Number(value);
 
     if (!valueToNumber) {
-      setErrorMessage('You can only enter numbers');
+      setErrorMessage(MESSAGE.YOU_CAN_ONLY_ENTER_NUMBERS);
 
-      if (name === 'groupSize') return setGroupSize(0);
+      if (name === NAME.GROUP_SIZE) return setGroupSize(0);
       return setMinMemberSize(0);
     }
-    if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage('Only numbers from 0 to 10 can be entered');
+    if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage(MESSAGE.ONLY_NUMBERS_FROM_0_TO_10_CAN_BE_ENTERED);
 
     switch (name) {
-      case 'groupSize':
+      case NAME.GROUP_SIZE:
         setGroupSize(valueToNumber);
         break;
-      case 'minMemberSize':
+      case NAME.MIN_MEMBER_SIZE:
         setMinMemberSize(valueToNumber);
         break;
-      default: alert('not exisit name');
+      default: alert(MESSAGE.NOT_EXISIT_NAME);
         break;
     }
   };
 
   const handleSubmitButton = () => {
-    if (people.length < groupSize * minMemberSize) return alert('You have to add more members');
+    if (people.length < groupSize * minMemberSize) return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 
     const groupList = getRandomGroupList(minMemberSize, groupSize, people.length);
 
     dispatch(setGroupingInputValues({ groupSize, minMemberSize }));
     dispatch(setRandomGroupList(groupList));
 
-    history.push('/result');
+    history.push(PATH.RESULT);
   };
 
   return (
@@ -57,17 +58,15 @@ const GroupingFrom: React.FC = (): ReactElement => {
       <Wrapper>
         <Label>✨Number of Group
         <Input
-            className='group-size-input'
             value={groupSize}
-            name='groupSize'
+            name={NAME.GROUP_SIZE}
             onChange={handleGroupingInput}
           />
         </Label>
         <Label>✨Minimum member size
         <Input
-            className='minimum-member-size-input'
             value={minMemberSize}
-            name='minMemberSize'
+            name={NAME.MIN_MEMBER_SIZE}
             onChange={handleGroupingInput}
           />
         </Label>
@@ -75,8 +74,8 @@ const GroupingFrom: React.FC = (): ReactElement => {
           {errorMessage ? errorMessage : ''}
         </ErrorMessageBox>
         <Button
-          className='submit-button'
-          title='Make Group!'
+          className={NAME.SUBMIT_BUTTON}
+          title={TITLE.MAKE_GROUP}
           onClick={handleSubmitButton}
         />
       </Wrapper>

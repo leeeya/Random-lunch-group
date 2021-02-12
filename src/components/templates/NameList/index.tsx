@@ -6,6 +6,7 @@ import Card from '../../../components/atoms/Card';
 import List from '../../../components/atoms/List';
 import { Wrapper } from '../../../styles/shared';
 import { NameListProps } from '../../../types';
+import { TITLE, NAME } from '../../../constants';
 
 const NameList: React.FC<NameListProps> = ({
   data,
@@ -18,16 +19,16 @@ const NameList: React.FC<NameListProps> = ({
 
   return (
     <Wrapper>
-      <List title='Lunch People'>
+      <List title={TITLE.LUNCH_PEOPLE}>
         {data.map(person =>
           <Card
             key={person._id}
-            className='name-card'
+            className={NAME.NAME_CARD}
           >
             {person.name}
             <Button
-              className='delete-button'
-              title='삭제'
+              className={NAME.DELETE_BUTTON}
+              title={TITLE.DELETE}
               onClick={() => handleDeleteButton(person._id)}
             />
           </Card>,

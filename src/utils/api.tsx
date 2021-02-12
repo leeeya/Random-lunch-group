@@ -1,8 +1,8 @@
-const CROSS_ORIGIN_URL = 'http://localhost:2021';
+const { REACT_APP_CROSS_ORIGIN_URL } = process.env;
 
 export const getPeople = async () => {
   try {
-    const response = await fetch(`${CROSS_ORIGIN_URL}/api/people`, {
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/people`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -16,7 +16,7 @@ export const getPeople = async () => {
 
 export const createPerson = async (name: string) => {
   try {
-    const response = await fetch(`${CROSS_ORIGIN_URL}/api/person`, {
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/person`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const createPerson = async (name: string) => {
 
 export const deletePerson = async (id: string) => {
   try {
-    const response = await fetch(`${CROSS_ORIGIN_URL}/api/person`, {
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/person`, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',

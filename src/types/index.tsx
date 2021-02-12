@@ -17,7 +17,6 @@ export interface CardProps {
 }
 
 export interface InputProps {
-  className?: string;
   name: string;
   value: string | number;
   placeholder?: string;

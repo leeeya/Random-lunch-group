@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import Card from '../../atoms/Card';
 import List from '../../atoms/List';
 import { GroupListProps } from '../../../types';
+import { TITLE, NAME } from '../../../constants';
 
 const GroupList: React.FC<GroupListProps> = ({
   data
@@ -9,11 +10,11 @@ const GroupList: React.FC<GroupListProps> = ({
   const { people, randomGroupList } = data;
 
   return (
-    <List title='Lunch Groups!'>
+    <List title={TITLE.LUNCH_GROUPS}>
       {randomGroupList.map((group, index) =>
         <Card
           key={index}
-          className='group-card'>
+          className={NAME.GROUP_CARD}>
           {group.map(personKey =>
             <p key={personKey}>
             {people[personKey].name}

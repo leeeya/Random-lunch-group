@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../utils/api';
 import { Person, PeopleInitState } from '../types';
+import { THUNK_TYPE, NAME, STATE, MESSAGE } from '../constants';
 
 const initialState: PeopleInitState = {
   people: [],
@@ -14,7 +15,7 @@ const initialState: PeopleInitState = {
 };
 
 export const getPeople = createAsyncThunk(
-  'people/getPeople',
+  THUNK_TYPE.GET_PEOPLE,
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await api.getPeople();
@@ -27,7 +28,7 @@ export const getPeople = createAsyncThunk(
 );
 
 export const createPerson = createAsyncThunk(
-  'people/createPerson',
+  THUNK_TYPE.CREATE_PERSON,
   async (name: string, { rejectWithValue }) => {
     try {
       const { data } = await api.createPerson(name);
@@ -40,7 +41,7 @@ export const createPerson = createAsyncThunk(
 );
 
 export const deletePerson = createAsyncThunk(
-  'people/deletePerson',
+  THUNK_TYPE.DELETE_PERSON,
   async (id: string, { rejectWithValue }) => {
     try {
       const { data } = await api.deletePerson(id);
@@ -53,7 +54,7 @@ export const deletePerson = createAsyncThunk(
 );
 
 const peopleSlice = createSlice({
-  name: 'people',
+  name: NAME.PEOPLE,
   initialState,
   reducers: {
     setGroupingInputValues: (state, action) => {
@@ -64,44 +65,44 @@ const peopleSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(getPeople.pending, (state, { payload }) => {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
+    builder.addCase(getPeople.pending, state => {
+      if (state.loading === STATE.IDLE) {
+        state.loading = STATE.PENDING;
       }
     });
     builder.addCase(getPeople.fulfilled, (state, { payload }: PayloadAction<Person[]>) => {
-      state.loading = 'idle';
+      state.loading = STATE.IDLE;
       state.people = payload;
     });
-    builder.addCase(getPeople.rejected, (state, { payload }) => {
-      state.loading = 'idle';
-      state.error = Error('get people failed');
+    builder.addCase(getPeople.rejected, state => {
+      state.loading = STATE.IDLE;
+      state.error = Error(MESSAGE.GET_PEOPLE_FAILED);
     });
-    builder.addCase(createPerson.pending, (state, { payload }) => {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
+    builder.addCase(createPerson.pending, state => {
+      if (state.loading === STATE.IDLE) {
+        state.loading = STATE.PENDING;
       }
     });
     builder.addCase(createPerson.fulfilled, (state, { payload }: PayloadAction<Person>) => {
-      state.loading = 'idle';
+      state.loading = STATE.IDLE;
       state.people.push(payload);
     });
-    builder.addCase(createPerson.rejected, (state, { payload }) => {
-      state.loading = 'idle';
-      state.error = Error('create person failed');
+    builder.addCase(createPerson.rejected, state => {
+      state.loading = STATE.IDLE;
+      state.error = Error(MESSAGE.CREATE_PERSON_FAILED);
     });
-    builder.addCase(deletePerson.pending, (state, { payload }) => {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
+    builder.addCase(deletePerson.pending, state => {
+      if (state.loading === STATE.IDLE) {
+        state.loading = STATE.PENDING;
       }
     });
     builder.addCase(deletePerson.fulfilled, (state, { payload }: PayloadAction<Person>) => {
-      state.loading = 'idle';
+      state.loading = STATE.IDLE;
       state.people = state.people.filter(person => person._id !== payload._id);
     });
-    builder.addCase(deletePerson.rejected, (state, { payload }) => {
-      state.loading = 'idle';
-      state.error = Error('delete person failed');
+    builder.addCase(deletePerson.rejected, state => {
+      state.loading = STATE.IDLE;
+      state.error = Error(MESSAGE.DELETE_PERSON_FAILED);
     });
   },
 });
