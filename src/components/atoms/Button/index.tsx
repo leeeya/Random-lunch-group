@@ -1,11 +1,6 @@
 import React, { ReactElement } from 'react';
 import { StyledButton } from '../../../styles/shared';
-
-interface ButtonProps {
-  className?: string;
-  title: string;
-  onClick?: () => void;
-}
+import { ButtonProps } from '../../../types';
 
 const Button: React.FC<ButtonProps> = ({
   className,

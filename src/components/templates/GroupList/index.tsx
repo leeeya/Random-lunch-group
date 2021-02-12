@@ -1,11 +1,7 @@
 import React, { ReactElement } from 'react';
 import Card from '../../atoms/Card';
-import List from '../../molecules/List';
-import { Person } from '../../../types';
-
-interface GroupListProps {
-  data: {people: Person[], randomGroupList: number[][]};
-}
+import List from '../../atoms/List';
+import { GroupListProps } from '../../../types';
 
 const GroupList: React.FC<GroupListProps> = ({
   data

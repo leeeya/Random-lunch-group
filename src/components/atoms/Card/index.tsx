@@ -1,10 +1,6 @@
 import React, { ReactElement } from 'react';
 import { StyledCard } from '../../../styles/shared';
-
-interface CardProps {
-  className: string;
-  children: any;
-}
+import { CardProps } from '../../../types';
 
 const Card: React.FC<CardProps> = ({
   className,

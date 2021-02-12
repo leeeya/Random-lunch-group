@@ -1,11 +1,6 @@
 import React, { ReactElement } from 'react';
 import { StyledUl } from '../../../styles/shared';
-
-interface ListProps {
-  title: string;
-  data?: [];
-  children?: any;
-}
+import { ListProps } from '../../../types';
 
 const List: React.FC<ListProps> = ({
   title,

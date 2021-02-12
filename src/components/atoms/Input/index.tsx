@@ -1,13 +1,6 @@
-import React, { ChangeEvent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { StyledInput } from '../../../styles/shared';
-
-interface InputProps {
-  className?: string;
-  name: string;
-  value: string | number;
-  placeholder?: string;
-  onChange: ({ target }: ChangeEvent<HTMLInputElement>) => void;
-}
+import { InputProps } from '../../../types';
 
 const Input: React.FC<InputProps> = ({
   className = 'default-input',

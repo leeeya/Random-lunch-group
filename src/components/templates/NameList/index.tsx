@@ -1,15 +1,11 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
-import { Person } from '../../../types';
 import { deletePerson } from '../../../modules/people';
 import Button from '../../../components/atoms/Button';
 import Card from '../../../components/atoms/Card';
-import List from '../../../components/molecules/List';
+import List from '../../../components/atoms/List';
 import { Wrapper } from '../../../styles/shared';
-
-interface NameListProps {
-  data: Person[];
-}
+import { NameListProps } from '../../../types';
 
 const NameList: React.FC<NameListProps> = ({
   data,

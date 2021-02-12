@@ -1,19 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from '../utils/api';
-import { Person } from '../types';
-
-interface GroupingInputValues {
-  groupSize: number;
-  minMemberSize: number;
-}
-
-interface PeopleInitState {
-  people: Person[];
-  loading: string;
-  groupingInputValues: GroupingInputValues;
-  randomGroupList: number[][];
-  error: Error | null;
-}
+import { Person, PeopleInitState } from '../types';
 
 const initialState: PeopleInitState = {
   people: [],
