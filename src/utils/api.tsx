@@ -1,8 +1,9 @@
 const { REACT_APP_CROSS_ORIGIN_URL } = process.env;
+import { PATH, METHOD } from '../constants';
 
 export const getPeople = async () => {
   try {
-    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/people`, {
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}${PATH.API}${PATH.PEOPLE}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -16,8 +17,8 @@ export const getPeople = async () => {
 
 export const createPerson = async (name: string) => {
   try {
-    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/person`, {
-      method: 'post',
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}${PATH.API}${PATH.PERSON}`, {
+      method: METHOD.POST,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -32,8 +33,8 @@ export const createPerson = async (name: string) => {
 
 export const deletePerson = async (id: string) => {
   try {
-    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}/api/person`, {
-      method: 'delete',
+    const response = await fetch(`${REACT_APP_CROSS_ORIGIN_URL}${PATH.API}${PATH.PERSON}`, {
+      method: METHOD.DELETE,
       headers: {
         'Content-Type': 'application/json',
       },

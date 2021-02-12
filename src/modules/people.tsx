@@ -8,7 +8,7 @@ const initialState: PeopleInitState = {
   loading: 'idle',
   groupingInputValues: {
     groupSize: 0,
-    minMemberSize: 0
+    minMemberSize: 0,
   },
   randomGroupList: [],
   error: null,

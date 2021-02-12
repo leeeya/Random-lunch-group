@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
@@ -7,7 +7,7 @@ import { RootState } from '../../../modules/rootReducer';
 import { Wrapper } from '../../../styles/shared';
 import { MESSAGE, NAME, TITLE } from '../../../constants';
 
-const NameInputForm = () => {
+const NameInputForm: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const { people } = useSelector((state: RootState) => state.people);

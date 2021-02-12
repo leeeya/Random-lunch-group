@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../modules/rootReducer';
-import styled from 'styled-components';
 import NameInputForm from '../../components/molecules/NameInputForm';
 import NameList from '../../components/templates/NameList';
 import { getPeople } from '../../modules/people';

@@ -26,6 +26,14 @@ export const NAME = {
 export const PATH = {
   MAIN: '/',
   RESULT: '/result',
+  API: '/api',
+  PEOPLE: 'people',
+  PERSON: 'person',
+};
+
+export const METHOD = {
+  POST: 'post',
+  DELETE: 'delete',
 };
 
 export const TITLE = {

@@ -5,7 +5,7 @@ import { GroupListProps } from '../../../types';
 import { TITLE, NAME } from '../../../constants';
 
 const GroupList: React.FC<GroupListProps> = ({
-  data
+  data,
 }) : ReactElement => {
   const { people, randomGroupList } = data;
 
