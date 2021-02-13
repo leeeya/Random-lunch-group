@@ -8,16 +8,34 @@ export const Wrapper = styled.div`
   margin: 8px auto;
 `;
 
+export const ListWrapper = styled.div`
+  ${flexColumnCenter}
+
+  width: 100%;
+  margin: 8px auto;
+`;
+
+export const FormWrapper = styled.div`
+  ${flexColumnCenter}
+
+  width: 100%;
+  display: flex;
+`;
+
 export const AppWrapper = styled.div`
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) 2.5fr;
+  width: 100%;
+  height: 100%;
+  margin: 24px;
+  padding: 24px;
+  grid-template-columns: minmax(300px, 2fr) minmax(500px, 6fr);
   justify-items: center;
-  padding: 80px;
 `;
 
 export const BoardWrapper = styled.div`
-  width: 100%;
-  height: 85vh;
+  width: 500px;
+  height: 90vh;
+  padding: 10px;
   border: 1px solid;
   border-color: ${({ theme }) => theme.color.navy};
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -50,11 +68,15 @@ export const StyledCard = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  width: 70%;
+  width: 240px;
+  margin-bottom: 16px;
 `;
 
 export const Label = styled.label`
-  border-color: ${({ theme }) => theme.color.red}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 40px;
 `;
 
 export const ErrorMessageBox = styled.p`
@@ -64,7 +86,27 @@ export const ErrorMessageBox = styled.p`
 export const StyledUl = styled.ul`
   ${flexRowCenter}
 
+  height: 50vh;
+  padding: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   margin-left: 16px;
   overflow-y: scroll;
+
+  .group-card {
+    width: 240px;
+    height: 240px;
+    padding: 16px;
+    background-color: ${({ theme }) => theme.color.darkGrey};
+
+   .name-wrapper {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+
+    p {
+      margin: 8px;
+    }
+   }
+  }
 `;

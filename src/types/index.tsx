@@ -29,6 +29,10 @@ export interface ListProps {
   children?: any;
 }
 
+export interface GroupingFromProps {
+  onClick: () => void;
+}
+
 export interface GroupListProps {
   data: {people: Person[], randomGroupList: number[][]};
 }
@@ -42,6 +46,10 @@ export interface GroupingInputValues {
   minMemberSize: number;
 }
 
+export interface ResultPageProps {
+  onClick: () => void;
+}
+
 export interface PeopleInitState {
   people: Person[];
   loading: string;
@@ -49,3 +57,4 @@ export interface PeopleInitState {
   randomGroupList: number[][];
   error: Error | null;
 }
+

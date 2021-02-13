@@ -1,23 +1,23 @@
 import React, { ReactElement } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../modules/rootReducer';
-import { setRandomGroupList } from '../../modules/people';
 import GroupList from '../../components/templates/GroupList';
 import Button from '../../components/atoms/Button';
-import { getRandomGroupList } from '../../utils/getRandomGroupList';
 import { Wrapper } from '../../styles/shared';
 import { NAME, TITLE } from '../../constants';
+import { ResultPageProps } from '../../types';
 
-const ResultPage: React.FC = (): ReactElement => {
-  const dispatch = useDispatch();
+const ResultPage: React.FC<ResultPageProps> = ({
+  onClick
+}): ReactElement => {
   const history = useHistory();
-  const { people, randomGroupList, groupingInputValues } = useSelector((state: RootState) => state.people);
+  const people = useSelector((state: RootState) => state.people.people);
+  const randomGroupList = useSelector((state: RootState) => state.people.randomGroupList);
+
 
   const handleAgainButton = () => {
-    const groupList = getRandomGroupList(groupingInputValues.minMemberSize, groupingInputValues.groupSize, people.length);
-
-    dispatch(setRandomGroupList(groupList));
+    onClick();
   };
 
   const handleGoBackButton = () => {

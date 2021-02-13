@@ -27,8 +27,8 @@ export const PATH = {
   MAIN: '/',
   RESULT: '/result',
   API: '/api',
-  PEOPLE: 'people',
-  PERSON: 'person',
+  PEOPLE: '/people',
+  PERSON: '/person',
 };
 
 export const METHOD = {

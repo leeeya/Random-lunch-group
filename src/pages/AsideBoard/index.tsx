@@ -8,7 +8,8 @@ import { BoardWrapper } from '../../styles/shared';
 
 const AsideBoard: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
-  const { people, error } = useSelector((state: RootState) => state.people);
+  const people = useSelector((state: RootState) => state.people.people);
+  const error = useSelector((state: RootState) => state.people.error);
 
   useEffect(() => {
     dispatch(getPeople());
@@ -28,4 +29,4 @@ const AsideBoard: React.FC = (): ReactElement => {
   );
 };
 
-export default AsideBoard;
+export default React.memo(AsideBoard);

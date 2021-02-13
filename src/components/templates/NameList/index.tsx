@@ -1,24 +1,28 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { deletePerson } from '../../../modules/people';
 import Button from '../../../components/atoms/Button';
 import Card from '../../../components/atoms/Card';
 import List from '../../../components/atoms/List';
-import { Wrapper } from '../../../styles/shared';
+import { ListWrapper } from '../../../styles/shared';
 import { NameListProps } from '../../../types';
-import { TITLE, NAME } from '../../../constants';
+import { TITLE, NAME, PATH } from '../../../constants';
 
 const NameList: React.FC<NameListProps> = ({
   data,
 }): ReactElement => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleDeleteButton = async (id: string) => {
+    if (history.location.pathname === PATH.RESULT) return;
+
     dispatch(deletePerson(id));
   };
 
   return (
-    <Wrapper>
+    <ListWrapper>
       <List title={TITLE.LUNCH_PEOPLE}>
         {data.map(person =>
           <Card
@@ -34,8 +38,8 @@ const NameList: React.FC<NameListProps> = ({
           </Card>,
         )}
       </List>
-    </Wrapper>
+    </ListWrapper>
   );
 };
 
-export default NameList;
+export default React.memo(NameList);

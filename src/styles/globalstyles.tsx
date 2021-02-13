@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    position:fixed;
+    position: fixed;
     margin: 0;
     padding: 0;
     background-color: ${theme.color.lightGrey};
@@ -37,12 +37,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${theme.fontSize.medium}
   }
 
-  h3 {
-    font-size: ${theme.fontSize.regular}
-  }
-
   p {
-    font-size: ${theme.fontSize.small}
+    font-size: ${theme.fontSize.regular}
   }
 `;
 

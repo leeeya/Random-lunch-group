@@ -1,23 +1,25 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 import { RootState } from '../../../modules/rootReducer';
-import { setGroupingInputValues, setRandomGroupList } from '../../../modules/people';
+import { setGroupingInputValues } from '../../../modules/people';
 import Input from '../../atoms/Input';
 import Button from '../../atoms/Button';
-import { getRandomGroupList } from '../../../utils/getRandomGroupList';
-import { Wrapper, Label, ErrorMessageBox } from '../../../styles/shared';
-import { MESSAGE, NAME, PATH, TITLE } from '../../../constants';
+import { FormWrapper, Wrapper, Label, ErrorMessageBox } from '../../../styles/shared';
+import { MESSAGE, NAME, TITLE } from '../../../constants';
+import { GroupingFromProps } from '../../../types';
 
-const GroupingFrom: React.FC = (): ReactElement => {
+const GroupingFrom: React.FC<GroupingFromProps> = ({
+  onClick,
+}): ReactElement => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { people } = useSelector((state: RootState) => state.people);
-  const [groupSize, setGroupSize] = useState(0);
-  const [minMemberSize, setMinMemberSize] = useState(0);
+  const people = useSelector((state: RootState) => state.people.people);
+  const [groupSize, setGroupSize] = useState<number>(0);
+  const [minMemberSize, setMinMemberSize] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleGroupingInput = ({ target }: ChangeEvent<HTMLInputElement>): void => {
+  const handleGroupingInput = ({
+    target,
+  }: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = target;
     const valueToNumber = Number(value);
 
@@ -27,6 +29,7 @@ const GroupingFrom: React.FC = (): ReactElement => {
       if (name === NAME.GROUP_SIZE) return setGroupSize(0);
       return setMinMemberSize(0);
     }
+
     if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage(MESSAGE.ONLY_NUMBERS_FROM_0_TO_10_CAN_BE_ENTERED);
 
     switch (name) {
@@ -39,21 +42,19 @@ const GroupingFrom: React.FC = (): ReactElement => {
       default: alert(MESSAGE.NOT_EXISIT_NAME);
         break;
     }
+
+    dispatch(setGroupingInputValues({ groupSize, minMemberSize }));
   };
 
   const handleSubmitButton = () => {
-    if (people.length < groupSize * minMemberSize) return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
+    if (people.length < groupSize * minMemberSize)
+      return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 
-    const groupList = getRandomGroupList(minMemberSize, groupSize, people.length);
-
-    dispatch(setGroupingInputValues({ groupSize, minMemberSize }));
-    dispatch(setRandomGroupList(groupList));
-
-    history.push(PATH.RESULT);
+    onClick();
   };
 
   return (
-    <div>
+    <FormWrapper>
       <h1>Grouping</h1>
       <Wrapper>
         <Label>✨Number of Group
@@ -79,7 +80,7 @@ const GroupingFrom: React.FC = (): ReactElement => {
           onClick={handleSubmitButton}
         />
       </Wrapper>
-    </div>
+    </FormWrapper>
   );
 };
 

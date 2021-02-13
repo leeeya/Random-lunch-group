@@ -6,7 +6,7 @@ import { TITLE, NAME } from '../../../constants';
 
 const GroupList: React.FC<GroupListProps> = ({
   data,
-}) : ReactElement => {
+}): ReactElement => {
   const { people, randomGroupList } = data;
 
   return (
@@ -14,12 +14,15 @@ const GroupList: React.FC<GroupListProps> = ({
       {randomGroupList.map((group, index) =>
         <Card
           key={index}
-          className={NAME.GROUP_CARD}>
-          {group.map(personKey =>
-            <p key={personKey}>
-            {people[personKey].name}
-            </p>,
-          )}
+          className={NAME.GROUP_CARD}
+        >
+          <div className='name-wrapper'>
+            {group.map(personKey =>
+              <p key={personKey}>
+                {people[personKey].name}
+              </p>,
+            )}
+          </div>
         </Card>,
       )}
     </List>

@@ -5,7 +5,7 @@ import { THUNK_TYPE, NAME, STATE, MESSAGE } from '../constants';
 
 const initialState: PeopleInitState = {
   people: [],
-  loading: 'idle',
+  loading: STATE.IDLE,
   groupingInputValues: {
     groupSize: 0,
     minMemberSize: 0,
