@@ -13,7 +13,7 @@ export interface ButtonProps {
 
 export interface CardProps {
   className: string;
-  children: any;
+  children: React.ReactNode;
 }
 
 export interface InputProps {
@@ -23,14 +23,20 @@ export interface InputProps {
   onChange: ({ target }: ChangeEvent<HTMLInputElement>) => void;
 }
 
+export interface InputValues {
+  groupSize: number,
+  minMemberSize: number,
+  peopleSize: number,
+}
+
 export interface ListProps {
   title: string;
   data?: [];
-  children?: any;
+  children?: React.ReactNode;
 }
 
 export interface GroupingFromProps {
-  onClick: () => void;
+  onClick: (minMemberSize: number, groupSize: number, peopleSize: number) => void;
 }
 
 export interface GroupListProps {
@@ -41,20 +47,14 @@ export interface NameListProps {
   data: Person[];
 }
 
-export interface GroupingInputValues {
-  groupSize: number;
-  minMemberSize: number;
-}
-
 export interface ResultPageProps {
-  onClick: () => void;
+  data: InputValues;
+  onClick: (minMemberSize: number, groupSize: number, peopleSize: number) => void;
 }
 
 export interface PeopleInitState {
   people: Person[];
   loading: string;
-  groupingInputValues: GroupingInputValues;
   randomGroupList: number[][];
   error: Error | null;
 }
-

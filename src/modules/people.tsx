@@ -6,10 +6,6 @@ import { THUNK_TYPE, NAME, STATE, MESSAGE } from '../constants';
 const initialState: PeopleInitState = {
   people: [],
   loading: STATE.IDLE,
-  groupingInputValues: {
-    groupSize: 0,
-    minMemberSize: 0,
-  },
   randomGroupList: [],
   error: null,
 };
@@ -57,9 +53,6 @@ const peopleSlice = createSlice({
   name: NAME.PEOPLE,
   initialState,
   reducers: {
-    setGroupingInputValues: (state, action) => {
-      state.groupingInputValues = action.payload;
-    },
     setRandomGroupList: (state, action) => {
       state.randomGroupList = action.payload;
     },
@@ -107,5 +100,5 @@ const peopleSlice = createSlice({
   },
 });
 
-export const { setGroupingInputValues, setRandomGroupList } = peopleSlice.actions;
+export const { setRandomGroupList } = peopleSlice.actions;
 export default peopleSlice.reducer;

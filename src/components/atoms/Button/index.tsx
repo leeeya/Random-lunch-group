@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { StyledButton } from '../../../styles/shared';
+import { StyledButton, ButtonWrapper } from '../../../styles/shared';
 import { ButtonProps } from '../../../types';
 
 const Button: React.FC<ButtonProps> = ({
@@ -8,12 +8,14 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }): ReactElement => {
   return (
-    <StyledButton
-      className={className}
-      onClick={onClick}
-    >
-      {title}
-    </StyledButton>
+    <ButtonWrapper>
+      <StyledButton
+        className={className}
+        onClick={onClick}
+      >
+        {title}
+      </StyledButton>
+    </ButtonWrapper>
   );
 };
 

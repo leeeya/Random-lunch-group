@@ -40,7 +40,7 @@ export const TITLE = {
   MAKE_GROUP: 'Make Group!',
   ENTER_MEMBER_NAME: 'Enter member name!',
   ADD: 'Add',
-  LUNCH_GROUPS: 'Lunch Groups!',
+  LUNCH_GROUPS: '🍚Lunch Groups!🍚',
   LUNCH_PEOPLE: 'Lunch People',
   DELETE: 'Delete',
   AGAIN: 'Again!',

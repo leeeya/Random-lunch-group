@@ -22,20 +22,19 @@ export const getRandomGroupList = (
 
   const randomKeyList = Array.from(randomkeysMap.values());
   const groupList: number[][] = [];
-  const numberOfperGroup = memberSize / groupSize;
-  const PERSON = 1;
-  let remainder = memberSize % groupSize;
 
-  while (groupList.length !== groupSize) {
+  while (randomKeyList.length) {
     let group: number[] = [];
 
-    if (remainder === 0) {
-      group = randomKeyList.splice(0, numberOfperGroup);
-    } else if (remainder >= 1) {
-      group = randomKeyList.splice(0, numberOfperGroup + PERSON);
-      remainder -= 1;
+    if (groupList.length === groupSize) {
+      const groupKey = getRandomInt(0, groupSize);
+      groupList[groupKey].push(randomKeyList[0]);
+      randomKeyList.splice(0, 1);
+      console.log(groupList);
+    } else {
+      group = randomKeyList.splice(0, minMemberSize);
+      groupList.push(group);
     }
-    groupList.push(group);
   }
 
   return groupList;

@@ -1,8 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { useState, ReactElement } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setRandomGroupList } from '../../modules/people';
-import { RootState } from '../../modules/rootReducer';
 import GroupingForm from '../../components/molecules/GroupingForm';
 import AsideBoard from '../AsideBoard';
 import ResultPage from '../ResultPage';
@@ -13,11 +12,15 @@ import { PATH } from '../../constants';
 const App: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const people = useSelector((state: RootState) => state.people.people);
-  const inputValues = useSelector((state: RootState) => state.people.groupingInputValues);
+  const [inputValues, setInputValues] = useState({
+    groupSize: 0,
+    minMemberSize: 0,
+    peopleSize: 0,
+  });
 
-  const makeGroupList = () => {
-    const groupList = getRandomGroupList(inputValues.minMemberSize, inputValues.groupSize, people.length);
+  const makeGroupList = (minMemberSize: number, groupSize: number, peopleSize: number) => {
+    setInputValues({ groupSize, minMemberSize, peopleSize });
+    const groupList = getRandomGroupList(minMemberSize, groupSize, peopleSize);
 
     dispatch(setRandomGroupList(groupList));
 
@@ -32,7 +35,10 @@ const App: React.FC = (): ReactElement => {
           <GroupingForm onClick={makeGroupList} />
         </Route>
         <Route path={PATH.RESULT}>
-          <ResultPage onClick={makeGroupList} />
+          <ResultPage
+            onClick={makeGroupList}
+            data={inputValues}
+          />
         </Route>
       </Switch>
     </AppWrapper>

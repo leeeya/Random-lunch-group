@@ -12,7 +12,6 @@ export const ListWrapper = styled.div`
   ${flexColumnCenter}
 
   width: 100%;
-  margin: 8px auto;
 `;
 
 export const FormWrapper = styled.div`
@@ -33,12 +32,47 @@ export const AppWrapper = styled.div`
 `;
 
 export const BoardWrapper = styled.div`
-  width: 500px;
+  width: 100%;
   height: 90vh;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid;
+  overflow: hidden;
   border-color: ${({ theme }) => theme.color.navy};
   border-radius: ${({ theme }) => theme.borderRadius};
+
+    .name-list-wrapper {
+      height: 60vh;
+    }
+`;
+
+export const ButtonWrapper = styled.div`
+  ${flexRowCenter}
+  width: 160px;
+
+  .add-button {
+    width: 100px;
+    height: 48px;
+  }
+
+  .delete-button {
+    width: 60px;
+    height: 24px;
+  }
+
+  .submit-button {
+    background-color: ${({ theme }) => theme.color.darkGrey };
+    height: 24px;
+  }
+
+  .go-back-button {
+    background-color: ${({ theme }) => theme.color.darkGrey };
+    height: 36px;
+  }
+
+  .again-button {
+    background-color: ${({ theme }) => theme.color.darkGrey };
+    height: 36px;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -48,6 +82,7 @@ export const StyledButton = styled.button`
   color: ${({ theme }) => theme.color.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   transition: all 300ms ease-in;
+
   &:hover {
     transform: translate(2px, -2px);
     cursor: pointer;
@@ -58,7 +93,7 @@ export const StyledCard = styled.div`
   ${flexColumnCenter};
 
   width: 120px;
-  height: 80px;
+  height: 60px;
   margin-bottom: 12px;
   margin-right: 12px;
   box-shadow: ${({ theme }) => theme.boxShadow.deep};
@@ -87,17 +122,17 @@ export const StyledUl = styled.ul`
   ${flexRowCenter}
 
   height: 50vh;
-  padding: 24px;
+  margin: 0px;
   margin-bottom: 20px;
   flex-wrap: wrap;
   margin-left: 16px;
   overflow-y: scroll;
 
   .group-card {
-    width: 240px;
-    height: 240px;
+    width: 160px;
+    height: 160px;
     padding: 16px;
-    background-color: ${({ theme }) => theme.color.darkGrey};
+    background-color: ${({ theme }) => theme.color.green };
 
    .name-wrapper {
      display: flex;

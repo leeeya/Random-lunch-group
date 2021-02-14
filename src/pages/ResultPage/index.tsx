@@ -9,15 +9,15 @@ import { NAME, TITLE } from '../../constants';
 import { ResultPageProps } from '../../types';
 
 const ResultPage: React.FC<ResultPageProps> = ({
-  onClick
+  onClick,
+  data,
 }): ReactElement => {
   const history = useHistory();
   const people = useSelector((state: RootState) => state.people.people);
   const randomGroupList = useSelector((state: RootState) => state.people.randomGroupList);
 
-
   const handleAgainButton = () => {
-    onClick();
+    onClick(data.minMemberSize, data.groupSize, data.peopleSize);
   };
 
   const handleGoBackButton = () => {

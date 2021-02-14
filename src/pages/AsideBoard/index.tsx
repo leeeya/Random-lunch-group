@@ -24,7 +24,9 @@ const AsideBoard: React.FC = (): ReactElement => {
   return (
     <BoardWrapper>
       <NameInputForm />
-      <NameList data={people} />
+      <div className='name-list-wrapper'>
+        <NameList data={people} />
+      </div>
     </BoardWrapper>
   );
 };

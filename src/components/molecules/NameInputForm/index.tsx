@@ -13,7 +13,7 @@ const NameInputForm: React.FC = (): ReactElement => {
   const people = useSelector((state: RootState) => state.people.people);
 
   const handleNameInput = ({
-    target
+    target,
   }: ChangeEvent<HTMLInputElement>): void => {
     setName(target.value);
   };

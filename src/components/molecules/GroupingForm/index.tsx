@@ -1,7 +1,6 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../../modules/rootReducer';
-import { setGroupingInputValues } from '../../../modules/people';
 import Input from '../../atoms/Input';
 import Button from '../../atoms/Button';
 import { FormWrapper, Wrapper, Label, ErrorMessageBox } from '../../../styles/shared';
@@ -11,10 +10,9 @@ import { GroupingFromProps } from '../../../types';
 const GroupingFrom: React.FC<GroupingFromProps> = ({
   onClick,
 }): ReactElement => {
-  const dispatch = useDispatch();
   const people = useSelector((state: RootState) => state.people.people);
-  const [groupSize, setGroupSize] = useState<number>(0);
-  const [minMemberSize, setMinMemberSize] = useState<number>(0);
+  const [groupSize, setGroupSize] = useState<number>(1);
+  const [minMemberSize, setMinMemberSize] = useState<number>(1);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleGroupingInput = ({
@@ -26,8 +24,8 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
     if (!valueToNumber) {
       setErrorMessage(MESSAGE.YOU_CAN_ONLY_ENTER_NUMBERS);
 
-      if (name === NAME.GROUP_SIZE) return setGroupSize(0);
-      return setMinMemberSize(0);
+      if (name === NAME.GROUP_SIZE) return setGroupSize(1);
+      return setMinMemberSize(1);
     }
 
     if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage(MESSAGE.ONLY_NUMBERS_FROM_0_TO_10_CAN_BE_ENTERED);
@@ -42,15 +40,12 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
       default: alert(MESSAGE.NOT_EXISIT_NAME);
         break;
     }
-
-    dispatch(setGroupingInputValues({ groupSize, minMemberSize }));
   };
 
   const handleSubmitButton = () => {
-    if (people.length < groupSize * minMemberSize)
-      return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
+    if (people.length < groupSize * minMemberSize) return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 
-    onClick();
+    onClick(minMemberSize, groupSize, people.length);
   };
 
   return (
