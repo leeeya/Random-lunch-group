@@ -28,9 +28,9 @@ export const getRandomGroupList = (
 
     if (groupList.length === groupSize) {
       const groupKey = getRandomInt(0, groupSize);
+
       groupList[groupKey].push(randomKeyList[0]);
       randomKeyList.splice(0, 1);
-      console.log(groupList);
     } else {
       group = randomKeyList.splice(0, minMemberSize);
       groupList.push(group);

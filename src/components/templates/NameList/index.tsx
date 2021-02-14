@@ -7,7 +7,7 @@ import Card from '../../../components/atoms/Card';
 import List from '../../../components/atoms/List';
 import { ListWrapper } from '../../../styles/shared';
 import { NameListProps } from '../../../types';
-import { TITLE, NAME, PATH } from '../../../constants';
+import { TITLE, NAME, PATH, MESSAGE } from '../../../constants';
 
 const NameList: React.FC<NameListProps> = ({
   data,
@@ -16,7 +16,7 @@ const NameList: React.FC<NameListProps> = ({
   const history = useHistory();
 
   const handleDeleteButton = async (id: string) => {
-    if (history.location.pathname === PATH.RESULT) return;
+    if (history.location.pathname === PATH.RESULT) return alert(MESSAGE.CAN_NOT_DELETE);
 
     dispatch(deletePerson(id));
   };

@@ -4,6 +4,7 @@ export const MESSAGE = {
   NOT_EXISIT_NAME: 'not exisit name',
   YOU_HAVE_TO_ADD_MORE_MEMBERS: 'You have to add more members',
   THIS_IS_A_DUPLICATE_NAME: 'This is a duplicate name',
+  CAN_NOT_DELETE: 'can not delete',
   GET_PEOPLE_FAILED: 'get people failed',
   CREATE_PERSON_FAILED: 'create person failed',
   DELETE_PERSON_FAILED: 'delete person failed',
@@ -21,6 +22,7 @@ export const NAME = {
   AGAIN_BUTTON: 'again-button',
   GO_BACK_BUTTON: 'go-back-button',
   PEOPLE: 'PEOPLE',
+  GROUPED_NAME_CARD: 'grouped-name-card',
 };
 
 export const PATH = {

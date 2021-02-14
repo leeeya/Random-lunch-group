@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { RootState } from '../../modules/rootReducer';
 import GroupList from '../../components/templates/GroupList';
 import Button from '../../components/atoms/Button';
-import { Wrapper } from '../../styles/shared';
+import { ResultPageWrapper } from '../../styles/shared';
 import { NAME, TITLE } from '../../constants';
 import { ResultPageProps } from '../../types';
 
@@ -25,7 +25,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
   };
 
   return (
-    <Wrapper>
+    <ResultPageWrapper>
       <GroupList data={{ people, randomGroupList }} />
       <Button
         className={NAME.AGAIN_BUTTON}
@@ -37,7 +37,7 @@ const ResultPage: React.FC<ResultPageProps> = ({
         title={TITLE.GO_BACK}
         onClick={handleGoBackButton}
       />
-    </Wrapper>
+    </ResultPageWrapper>
   );
 };
 

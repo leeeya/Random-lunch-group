@@ -30,7 +30,7 @@ export interface InputValues {
 }
 
 export interface ListProps {
-  title: string;
+  title?: string;
   data?: [];
   children?: React.ReactNode;
 }

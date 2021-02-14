@@ -4,7 +4,7 @@ import { flexColumnCenter, flexRowCenter } from './mixin';
 export const Wrapper = styled.div`
   ${flexColumnCenter}
 
-  width: 100%;
+  width: 80%;
   margin: 8px auto;
 `;
 
@@ -17,8 +17,10 @@ export const ListWrapper = styled.div`
 export const FormWrapper = styled.div`
   ${flexColumnCenter}
 
-  width: 100%;
-  display: flex;
+  width: 90%;
+  border: 1px solid;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border-color: ${({ theme }) => theme.color.navy};
 `;
 
 export const AppWrapper = styled.div`
@@ -26,14 +28,14 @@ export const AppWrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: 24px;
-  padding: 24px;
-  grid-template-columns: minmax(300px, 2fr) minmax(500px, 6fr);
+  padding: 80px 40px;
+  grid-template-columns: minmax(400px, 2fr) minmax(800px, 6fr);
   justify-items: center;
 `;
 
 export const BoardWrapper = styled.div`
-  width: 100%;
-  height: 90vh;
+  width: 40vh;
+  height: 80vh;
   padding: 8px;
   border: 1px solid;
   overflow: hidden;
@@ -45,8 +47,20 @@ export const BoardWrapper = styled.div`
     }
 `;
 
+export const ResultPageWrapper = styled.div`
+  ${flexColumnCenter}
+
+  width: 90%;
+  height: 80vh;
+  padding: 24px 12px;
+  border: 1px solid;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border-color: ${({ theme }) => theme.color.navy};
+`;
+
 export const ButtonWrapper = styled.div`
   ${flexRowCenter}
+
   width: 160px;
 
   .add-button {
@@ -61,16 +75,19 @@ export const ButtonWrapper = styled.div`
 
   .submit-button {
     background-color: ${({ theme }) => theme.color.darkGrey };
-    height: 24px;
+    width: 240px;
+    height: 36px;
   }
 
   .go-back-button {
     background-color: ${({ theme }) => theme.color.darkGrey };
+    width: 240px;
     height: 36px;
   }
 
   .again-button {
     background-color: ${({ theme }) => theme.color.darkGrey };
+    width: 240px;
     height: 36px;
   }
 `;
@@ -129,15 +146,20 @@ export const StyledUl = styled.ul`
   overflow-y: scroll;
 
   .group-card {
-    width: 160px;
-    height: 160px;
-    padding: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 35vh;
+    height: 35vh;
+    padding: 24px 12px;
+    flex-wrap: wrap;
     background-color: ${({ theme }) => theme.color.green };
 
-   .name-wrapper {
-     display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
+   .grouped-name-card {
+    width: 80px;
+    height: 40px;
+    color: ${({ theme }) => theme.color.black };
+    background-color: ${({ theme }) => theme.color.grey };
 
     p {
       margin: 8px;

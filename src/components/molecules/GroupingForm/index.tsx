@@ -11,8 +11,8 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
   onClick,
 }): ReactElement => {
   const people = useSelector((state: RootState) => state.people.people);
-  const [groupSize, setGroupSize] = useState<number>(1);
-  const [minMemberSize, setMinMemberSize] = useState<number>(1);
+  const [groupSize, setGroupSize] = useState<number | string>('');
+  const [minMemberSize, setMinMemberSize] = useState<number | string>('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleGroupingInput = ({
@@ -24,8 +24,8 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
     if (!valueToNumber) {
       setErrorMessage(MESSAGE.YOU_CAN_ONLY_ENTER_NUMBERS);
 
-      if (name === NAME.GROUP_SIZE) return setGroupSize(1);
-      return setMinMemberSize(1);
+      if (name === NAME.GROUP_SIZE) return setGroupSize('');
+      return setMinMemberSize('');
     }
 
     if (valueToNumber < 1 || 10 < valueToNumber) return setErrorMessage(MESSAGE.ONLY_NUMBERS_FROM_0_TO_10_CAN_BE_ENTERED);
@@ -43,9 +43,11 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
   };
 
   const handleSubmitButton = () => {
-    if (people.length < groupSize * minMemberSize) return alert(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
+    if (typeof groupSize === 'number' && typeof minMemberSize === 'number') {
+      if (people.length < groupSize * minMemberSize) return setErrorMessage(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 
-    onClick(minMemberSize, groupSize, people.length);
+      onClick(minMemberSize, groupSize, people.length);
+    }
   };
 
   return (

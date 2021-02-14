@@ -10,22 +10,26 @@ const GroupList: React.FC<GroupListProps> = ({
   const { people, randomGroupList } = data;
 
   return (
-    <List title={TITLE.LUNCH_GROUPS}>
-      {randomGroupList.map((group, index) =>
-        <Card
-          key={index}
-          className={NAME.GROUP_CARD}
-        >
-          <div className='name-wrapper'>
+    <>
+      <h1>{TITLE.LUNCH_GROUPS}</h1>
+      <List>
+        {randomGroupList.map((group, index) =>
+          <Card
+            key={index}
+            className={NAME.GROUP_CARD}
+          >
             {group.map(personKey =>
-              <p key={personKey}>
+              <Card
+                key={personKey}
+                className={NAME.GROUPED_NAME_CARD}
+              >
                 {people[personKey].name}
-              </p>,
+              </Card>,
             )}
-          </div>
-        </Card>,
-      )}
-    </List>
+          </Card>,
+        )}
+      </List>
+    </>
   );
 };
 
