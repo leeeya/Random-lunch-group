@@ -17,10 +17,10 @@ export interface CardProps {
 }
 
 export interface InputProps {
-  name: string;
-  value: string | number;
+  name?: string;
+  value?: string | number;
   placeholder?: string;
-  onChange: ({ target }: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: ({ target }: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface InputValues {
@@ -36,7 +36,7 @@ export interface ListProps {
 }
 
 export interface GroupingFromProps {
-  onClick: (minMemberSize: number, groupSize: number, peopleSize: number) => void;
+  onSubmit: (minMemberSize: number, groupSize: number, peopleSize: number) => void;
 }
 
 export interface GroupListProps {

@@ -8,7 +8,7 @@ const GroupList: React.FC<GroupListProps> = ({
   data,
 }): ReactElement => {
   const { people, randomGroupList } = data;
-
+  console.log(data);
   return (
     <>
       <h1>{TITLE.LUNCH_GROUPS}</h1>

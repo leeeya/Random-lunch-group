@@ -8,7 +8,7 @@ import { MESSAGE, NAME, TITLE } from '../../../constants';
 import { GroupingFromProps } from '../../../types';
 
 const GroupingFrom: React.FC<GroupingFromProps> = ({
-  onClick,
+  onSubmit,
 }): ReactElement => {
   const people = useSelector((state: RootState) => state.people.people);
   const [groupSize, setGroupSize] = useState<number | string>('');
@@ -46,7 +46,7 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
     if (typeof groupSize === 'number' && typeof minMemberSize === 'number') {
       if (people.length < groupSize * minMemberSize) return setErrorMessage(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 
-      onClick(minMemberSize, groupSize, people.length);
+      onSubmit(minMemberSize, groupSize, people.length);
     }
   };
 

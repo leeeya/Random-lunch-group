@@ -32,7 +32,7 @@ const App: React.FC = (): ReactElement => {
       <AsideBoard />
       <Switch>
         <Route exact path={PATH.MAIN}>
-          <GroupingForm onClick={makeGroupList} />
+          <GroupingForm onSubmit={makeGroupList} />
         </Route>
         <Route path={PATH.RESULT}>
           <ResultPage
