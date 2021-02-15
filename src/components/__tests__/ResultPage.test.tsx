@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { render } from '../../setupTests';
-import ResultPage from '../../pages/ResultPage';
+import ResultPage from '../templates/ResultPage';
 
 describe(`<ResultPage />`, () => {
   it('should work input and button corretly', () => {

@@ -23,6 +23,7 @@ export const NAME = {
   GO_BACK_BUTTON: 'go-back-button',
   PEOPLE: 'PEOPLE',
   GROUPED_NAME_CARD: 'grouped-name-card',
+  NAME_LIST_WRAPPER: 'name-list-wrapper',
 };
 
 export const PATH = {

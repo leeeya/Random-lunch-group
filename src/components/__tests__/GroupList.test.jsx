@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../setupTests';
-import GroupList from '../templates/GroupList';
+import GroupList from '../molecules/GroupList';
 
 describe(`<GroupList />`, () => {
   const MOCK_DATA = {

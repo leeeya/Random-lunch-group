@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { RootState } from '../../modules/rootReducer';
-import GroupList from '../../components/templates/GroupList';
-import Button from '../../components/atoms/Button';
-import { ResultPageWrapper } from '../../styles/shared';
-import { NAME, TITLE } from '../../constants';
-import { ResultPageProps } from '../../types';
+import { RootState } from '../../../modules/rootReducer';
+import GroupList from '../../molecules/GroupList';
+import Button from '../../atoms/Button';
+import { ResultPageWrapper } from '../../../styles/shared';
+import { NAME, TITLE } from '../../../constants';
+import { ResultPageProps } from '../../../types';
 
 const ResultPage: React.FC<ResultPageProps> = ({
   onClick,

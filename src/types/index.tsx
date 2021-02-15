@@ -58,3 +58,7 @@ export interface PeopleInitState {
   randomGroupList: number[][];
   error: Error | null;
 }
+
+export interface AsideBoardProps {
+  boardData: Person[];
+}

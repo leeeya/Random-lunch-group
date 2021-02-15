@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-
 import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -30,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: ${theme.fontSize.large}
+    font-size: ${theme.fontSize.large};
   }
 
   h2 {

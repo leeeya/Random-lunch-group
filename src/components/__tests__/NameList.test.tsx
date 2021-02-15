@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '../../setupTests';
-import NameList from '../templates/NameList';
+import NameList from '../molecules/NameList';
 
 describe(`<NameList />`, () => {
   const MOCK_DATA = [{ _id: '1', name: 'ABC' }, { _id: '2', name: 'DEF' }, { _id: '3', name: 'GHI' }, { _id: '4', name: 'JKL' }];
