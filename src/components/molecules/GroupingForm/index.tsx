@@ -43,6 +43,7 @@ const GroupingFrom: React.FC<GroupingFromProps> = ({
   };
 
   const handleSubmitButton = () => {
+    if (!groupSize || !minMemberSize) return setErrorMessage(MESSAGE.YOU_SHOULD_ENTER_ALL_SIZE);
     if (typeof groupSize === 'number' && typeof minMemberSize === 'number') {
       if (people.length < groupSize * minMemberSize) return setErrorMessage(MESSAGE.YOU_HAVE_TO_ADD_MORE_MEMBERS);
 

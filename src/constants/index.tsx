@@ -8,6 +8,7 @@ export const MESSAGE = {
   GET_PEOPLE_FAILED: 'get people failed',
   CREATE_PERSON_FAILED: 'create person failed',
   DELETE_PERSON_FAILED: 'delete person failed',
+  YOU_SHOULD_ENTER_ALL_SIZE: 'you should enter all size',
 };
 
 export const NAME = {
