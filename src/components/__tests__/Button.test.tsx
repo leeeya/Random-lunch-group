@@ -7,14 +7,14 @@ describe('<Button />', () => {
   const MOCK_TITLE = 'test-title';
 
   it('should show button title as prop', () => {
-    const  { getByText } = render(<Button title={MOCK_TITLE} />);
+    const { getByText } = render(<Button title={MOCK_TITLE} />);
 
     expect(getByText(MOCK_TITLE)).toBeInTheDocument();
   });
 
   it('should be invoked handler each time click event occurs', () => {
     const onClick = jest.fn();
-    const  { getByText } = render(<Button title={MOCK_TITLE} onClick={onClick} />);
+    const { getByText } = render(<Button title={MOCK_TITLE} onClick={onClick} />);
     const button = getByText(MOCK_TITLE);
 
     fireEvent.click(button);

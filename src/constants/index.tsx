@@ -9,6 +9,7 @@ export const MESSAGE = {
   CREATE_PERSON_FAILED: 'create person failed',
   DELETE_PERSON_FAILED: 'delete person failed',
   YOU_SHOULD_ENTER_ALL_SIZE: 'you should enter all size',
+  YOU_SHOULD_ENTER_NAME: 'you should enter name',
 };
 
 export const NAME = {

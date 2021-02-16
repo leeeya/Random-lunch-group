@@ -13,7 +13,3 @@ export const flexColumnCenter = css`
   justify-content: center;
   align-items: center;
 `;
-
-export const generalPadding = css`
-  padding: 0 1.5vw;
-`;

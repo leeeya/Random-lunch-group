@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 import configs from '../configs';
 
 const dbLoader = () => {

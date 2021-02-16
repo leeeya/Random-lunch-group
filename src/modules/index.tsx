@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import { ENV } from '../constants';
 
-const middlewares = [ ReduxThunk ];
+const middlewares = [ReduxThunk];
 
 if (process.env.NODE_ENV !== ENV.PRODUCTION) {
   const logger = createLogger();

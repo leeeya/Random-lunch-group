@@ -15,7 +15,7 @@ describe(`<NameInputForm />`, () => {
     const { container } = render(<NameInputForm />);
     const nameInput = container.querySelectorAll('input')[0];
 
-    fireEvent.change(nameInput, { target: { value: MOCK_NAME }});
+    fireEvent.change(nameInput, { target: { value: MOCK_NAME } });
     expect(nameInput.value).toBe(MOCK_NAME);
   });
 });

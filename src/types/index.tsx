@@ -40,7 +40,7 @@ export interface GroupingFromProps {
 }
 
 export interface GroupListProps {
-  data: {people: Person[], randomGroupList: number[][]};
+  data: { people: Person[], randomGroupList: number[][] };
 }
 
 export interface NameListProps {

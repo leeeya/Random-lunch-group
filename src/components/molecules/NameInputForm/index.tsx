@@ -19,6 +19,7 @@ const NameInputForm: React.FC = (): ReactElement => {
   };
 
   const handleAddNameButton = async () => {
+    if (!name) return alert (MESSAGE.YOU_SHOULD_ENTER_NAME);
     if (people.find(person => person.name === name)) {
       alert(MESSAGE.THIS_IS_A_DUPLICATE_NAME);
       setName('');

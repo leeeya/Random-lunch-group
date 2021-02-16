@@ -74,19 +74,19 @@ export const ButtonWrapper = styled.div`
   }
 
   .submit-button {
-    background-color: ${({ theme }) => theme.color.darkGrey };
+    background-color: ${({ theme }) => theme.color.darkGrey};
     width: 240px;
     height: 36px;
   }
 
   .go-back-button {
-    background-color: ${({ theme }) => theme.color.darkGrey };
+    background-color: ${({ theme }) => theme.color.darkGrey};
     width: 240px;
     height: 36px;
   }
 
   .again-button {
-    background-color: ${({ theme }) => theme.color.darkGrey };
+    background-color: ${({ theme }) => theme.color.darkGrey};
     width: 240px;
     height: 36px;
   }
@@ -153,13 +153,13 @@ export const StyledUl = styled.ul`
     height: 35vh;
     padding: 24px 12px;
     flex-wrap: wrap;
-    background-color: ${({ theme }) => theme.color.green };
+    background-color: ${({ theme }) => theme.color.green};
 
    .grouped-name-card {
     width: 80px;
     height: 40px;
-    color: ${({ theme }) => theme.color.black };
-    background-color: ${({ theme }) => theme.color.grey };
+    color: ${({ theme }) => theme.color.black};
+    background-color: ${({ theme }) => theme.color.grey};
 
     p {
       margin: 8px;

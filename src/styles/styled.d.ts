@@ -7,7 +7,6 @@ declare module 'styled-components' {
       medium: string,
       regular: string,
       small: string,
-      micro: string,
     },
     fontWeight: {
       bold: number,
@@ -22,13 +21,10 @@ declare module 'styled-components' {
       darkGrey: string,
       navy: string,
       green: string,
-      orange: string,
       red: string,
     },
-    duration: string,
     borderRadius: string,
     boxShadow: {
-      default: string,
       deep: string,
     }
   }

@@ -4,7 +4,7 @@ import GroupList from '../molecules/GroupList';
 
 describe(`<GroupList />`, () => {
   const MOCK_DATA = {
-    people: [{ id: '1', name: 'ABC' }, { id: '2', name: 'DEF' },  { id: '3', name: 'GHI' }, { id : '4', name: 'JKL' }],
+    people: [{ id: '1', name: 'ABC' }, { id: '2', name: 'DEF' }, { id: '3', name: 'GHI' }, { id: '4', name: 'JKL' }],
     randomGroupList: [[1, 0], [3, 2]],
   };
 

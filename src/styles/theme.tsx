@@ -6,7 +6,6 @@ const theme: DefaultTheme = {
     medium: '28px',
     regular: '18px',
     small: '16px',
-    micro: '14px',
   },
   fontWeight: {
     bold: 700,
@@ -21,13 +20,10 @@ const theme: DefaultTheme = {
     darkGrey: '#52616b',
     navy: '#0a043c',
     green: '#03506f',
-    orange: '#ff5722',
     red: '#eb0000',
   },
-  duration: '300ms',
   borderRadius: '8px',
   boxShadow: {
-    default: '0px 2px 2px rgba(0, 0, 0, 0.25)',
     deep: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
   },
 };

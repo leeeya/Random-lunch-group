@@ -11,7 +11,7 @@ describe(`<Card />`, () => {
       <Card className={MOCK_CLASS_NAME}>
         {MOCK_CARD_NAME}
       </Card>
-      );
+    );
 
     expect(getByText(MOCK_CARD_NAME)).toBeInTheDocument();
   });
